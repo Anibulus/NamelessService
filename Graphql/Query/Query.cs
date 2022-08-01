@@ -1,10 +1,12 @@
+using Blogging.Entities;
+using Core;
+
 namespace GraphQL;
 
 public class Query
 {
-    public Blogging.Entities.Blog GetBlog() =>
-        new Blogging.Entities.Blog
-        {
-            Title = "C# in depth.",
-        };
+    public IQueryable<Blog> ListBlog(BloggingContext context)
+    {
+        return context.Blogs;
+    }
 }
